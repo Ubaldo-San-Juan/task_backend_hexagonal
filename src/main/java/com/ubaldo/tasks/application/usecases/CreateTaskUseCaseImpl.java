@@ -5,7 +5,7 @@ import com.ubaldo.tasks.domain.ports.in.CreateTaskUseCase;
 import com.ubaldo.tasks.domain.ports.out.TaskRepositoryPort;
 
 public class CreateTaskUseCaseImpl implements CreateTaskUseCase {
-    final TaskRepositoryPort taskRepositoryPort;
+    private final TaskRepositoryPort taskRepositoryPort;
 
     public CreateTaskUseCaseImpl(TaskRepositoryPort taskRepositoryPort) {
         this.taskRepositoryPort = taskRepositoryPort;
