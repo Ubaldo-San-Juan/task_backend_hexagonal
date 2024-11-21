@@ -1,20 +1,41 @@
-package com.ubaldo.tasks.domain.models;
+package com.ubaldo.tasks.infrastructure.entities;
+
+import com.ubaldo.tasks.application.services.TaskService;
+import com.ubaldo.tasks.domain.models.Task;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
 
-public class Task {
+@Entity
+public class TaskEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private LocalDateTime creationDate;
     private boolean completed;
 
-    public Task (Long id, String title, String description, LocalDateTime creationDate, boolean completed) {
+    public TaskEntity() {
+    }
+
+    public TaskEntity(Long id, String title, String description, LocalDateTime creationDate, boolean completed) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
         this.completed = completed;
+    }
+
+    public static TaskEntity fromDomainModel(Task task) {
+        return new TaskEntity(task.getId(), task.getTitle(), task.getDescription(), task.getCreationDate(), task.getCompleted());
+    }
+
+    public Task toDomainModel() {
+        return new Task(id, title, description, creationDate, completed);
     }
 
     public Long getId() {
