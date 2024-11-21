@@ -49,7 +49,7 @@ public class Task {
         this.creationDate = creationDate;
     }
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
