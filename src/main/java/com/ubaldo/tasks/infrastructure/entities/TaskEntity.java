@@ -1,5 +1,6 @@
 package com.ubaldo.tasks.infrastructure.entities;
 
+import com.ubaldo.tasks.application.services.TaskService;
 import com.ubaldo.tasks.domain.models.Task;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +32,10 @@ public class TaskEntity {
 
     public static TaskEntity fromDomainModel(Task task) {
         return new TaskEntity(task.getId(), task.getTitle(), task.getDescription(), task.getCreationDate(), task.getCompleted());
+    }
+
+    public Task toDomainModel() {
+        return new Task(id, title, description, creationDate, completed);
     }
 
     public Long getId() {
