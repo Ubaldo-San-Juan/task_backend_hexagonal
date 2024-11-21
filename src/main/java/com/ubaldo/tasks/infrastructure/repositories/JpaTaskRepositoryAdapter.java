@@ -3,12 +3,14 @@ package com.ubaldo.tasks.infrastructure.repositories;
 import com.ubaldo.tasks.domain.models.Task;
 import com.ubaldo.tasks.domain.ports.out.TaskRepositoryPort;
 import com.ubaldo.tasks.infrastructure.entities.TaskEntity;
+import org.springframework.stereotype.Repository;
 
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Repository
 public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
     private final JpaTaskRepository jpaTaskRepository;
 
